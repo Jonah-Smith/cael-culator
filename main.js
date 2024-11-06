@@ -13,6 +13,7 @@ const eightButton = document.getElementById("number8");
 const nineButton = document.getElementById("number9");
 
 //operators
+const multiplyButton = document.getElementById("operatorMultiply");
 const squareButton = document.getElementById("operatorSquare");
 const rootButton = document.getElementById("operatorRoot");
 const equalButton = document.getElementById("equals");
@@ -20,7 +21,6 @@ const pointButton = document.getElementById("point");
 const clearButton = document.getElementById("clear");
 const plusButton = document.getElementById("operatorAdd");
 const minusButton = document.getElementById("operatorSubtract");
-const multiplyButton = document.getElementById("operatorMultiply");
 const divideButton = document.getElementById("operatorDivide");
 const negatizeButton = document.getElementById("operatorPlusMinus");
 
@@ -34,7 +34,7 @@ const display = document.getElementById("display");
 // });
 
 let firstNumber = "";
-let secondNumnber = "";
+let secondNumber = "";
 let currentOperator = "";
 
 clearButton.addEventListener("click", () => {
@@ -42,14 +42,20 @@ clearButton.addEventListener("click", () => {
 });
 
 //numbers
-oneButton.addEventListener("click", () => {
-  firstNumber += 1;
-  display.value += "1";
+zeroButton.addEventListener("click", () => {
+  firstNumber += 0;
+  display.value += "0";
 });
 
 oneButton.addEventListener("click", () => {
-  firstNumber += 1;
-  display.value += "1";
+  if (currentOperator.value) {
+    secondNumber = "1";
+  } else {
+    firstNumber = "1";
+  }
+
+  // firstNumber += 1;
+  // display.value += "1";
 });
 
 twoButton.addEventListener("click", () => {
@@ -95,29 +101,38 @@ nineButton.addEventListener("click", () => {
 //operators
 
 plusButton.addEventListener("click", () => {
+  currentOperator = "+";
   display.value += "+";
 });
 minusButton.addEventListener("click", () => {
+  currentOperator = "-";
   display.value += "-";
 });
 divideButton.addEventListener("click", () => {
+  currentOperator = "÷";
   display.value += "÷";
 });
 multiplyButton.addEventListener("click", () => {
+  currentOperator = "×";
   display.value += "×";
 });
 squareButton.addEventListener("click", () => {
-  display.value += "x²";
+  currentOperator = "²";
+  display.value += "²";
 });
 rootButton.addEventListener("click", () => {
-  display.value += "√x";
+  currentOperator = "√";
+  display.value += "√";
 });
 pointButton.addEventListener("click", () => {
+  currentOperator = ".";
   display.value += ".";
 });
 negatizeButton.addEventListener("click", () => {
+  currentOperator = "±";
   display.value += "±";
 });
-equalButtonButton.addEventListener("click", () => {
+equalButton.addEventListener("click", () => {
+  currentOperator = "=";
   display.value += "=";
 });
