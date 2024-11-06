@@ -33,106 +33,164 @@ const display = document.getElementById("display");
 //   sound.play();
 // });
 
-let firstNumber = "";
+let currentNumberString = "";
 let secondNumber = "";
+let savedNumber = 0;
 let currentOperator = "";
+let expectingNewNumber = false;
 
 clearButton.addEventListener("click", () => {
-  display.value = "";
+  currentNumberString = "";
+  expectingNewNumber = false;
+  saveNumber = 0;
+  currentOperator = 0;
+  updateDisplay();
 });
+
+function appendDigit(digit) {
+  if (expectingNewNumber) {
+    currentNumberString = "";
+    expectingNewNumber = false;
+  }
+
+  currentNumberString += digit;
+  updateDisplay();
+}
+
+function updateDisplay() {
+  display.value = currentNumberString;
+}
 
 //numbers
 zeroButton.addEventListener("click", () => {
-  firstNumber += 0;
-  display.value += "0";
+  appendDigit("0");
 });
 
 oneButton.addEventListener("click", () => {
-  if (currentOperator.value) {
-    secondNumber = "1";
-  } else {
-    firstNumber = "1";
-  }
-
-  // firstNumber += 1;
-  // display.value += "1";
+  appendDigit("1");
 });
 
 twoButton.addEventListener("click", () => {
-  firstNumber += 2;
-  display.value += "2";
+  appendDigit("2");
 });
 
 threeButton.addEventListener("click", () => {
-  firstNumber += 3;
-  display.value += "3";
+  appendDigit("3");
 });
 
 fourButton.addEventListener("click", () => {
-  firstNumber += 4;
-  display.value += "4";
+  appendDigit("4");
 });
 
 fiveButton.addEventListener("click", () => {
-  firstNumber += 5;
-  display.value += "5";
+  appendDigit("5");
 });
 
 sixButton.addEventListener("click", () => {
-  firstNumber += 6;
-  display.value += "6";
+  appendDigit("6");
 });
 
 sevenButton.addEventListener("click", () => {
-  firstNumber += 7;
-  display.value += "7";
+  appendDigit("7");
 });
 
 eightButton.addEventListener("click", () => {
-  firstNumber += 8;
-  display.value += "8";
+  appendDigit("8");
 });
 
 nineButton.addEventListener("click", () => {
-  firstNumber += 9;
-  display.value += "9";
+  appendDigit("9");
 });
 
 //operators
 
 plusButton.addEventListener("click", () => {
   currentOperator = "+";
-  display.value += "+";
+  expectingNewNumber = true;
+  //convert the firstNumber from a string to a number
+  savedNumber = Number.parseFloat(currentNumberString);
 });
 minusButton.addEventListener("click", () => {
   currentOperator = "-";
-  display.value += "-";
+  expectingNewNumber = true;
+  //convert the firstNumber from a string to a number
+  savedNumber = Number.parseFloat(currentNumberString);
 });
 divideButton.addEventListener("click", () => {
   currentOperator = "÷";
-  display.value += "÷";
+  expectingNewNumber = true;
+  //convert the firstNumber from a string to a number
+  savedNumber = Number.parseFloat(currentNumberString);
 });
 multiplyButton.addEventListener("click", () => {
   currentOperator = "×";
-  display.value += "×";
+  expectingNewNumber = true;
+  //convert the firstNumber from a string to a number
+  savedNumber = Number.parseFloat(currentNumberString);
 });
 squareButton.addEventListener("click", () => {
-  currentOperator = "²";
-  display.value += "²";
+  const number = Number.parseFloat(currentNumberString);
+
+  // do the math
+  const result = number * number;
+
+  //convert back to string
+  currentNumberString = result.toString();
+
+  updateDisplay();
 });
 rootButton.addEventListener("click", () => {
-  currentOperator = "√";
-  display.value += "√";
+  const number = Number.parseFloat(currentNumberString);
+
+  // do the math
+  const result = Math.sqrt(number);
+
+  //convert back to string
+  currentNumberString = result.toString();
+
+  updateDisplay();
 });
 pointButton.addEventListener("click", () => {
   currentOperator = ".";
   display.value += ".";
 });
+
 negatizeButton.addEventListener("click", () => {
-  currentOperator = "±";
-  display.value += "±";
+  //convert the firstNumber from a string to a number
+  const number = Number.parseFloat(currentNumberString);
+
+  // do the math
+  const result = number * -1;
+
+  //convert back to string
+  currentNumberString = result.toString();
+
+  updateDisplay();
 });
+
+//equal
 equalButton.addEventListener("click", () => {
-  currentOperator = "=";
-  display.value += "=";
+  const number = Number.parseFloat(currentNumberString);
+  let result;
+
+  if (currentOperator === "+") {
+    result = savedNumber + number;
+  }
+
+  if (currentOperator === "-") {
+    result = savedNumber - number;
+  }
+
+  if (currentOperator === "×") {
+    result = savedNumber * number;
+  }
+
+  if (currentOperator === "÷") {
+    result = savedNumber / number;
+  }
+
+  console.log(result);
+  currentNumberString = result.toString();
+  console.log(currentNumberString);
+  updateDisplay();
 });
