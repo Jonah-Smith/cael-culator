@@ -26,42 +26,39 @@ const negatizeButton = document.getElementById("operatorPlusMinus");
 
 //other
 const display = document.getElementById("display");
-const previousExpression = document.getElementById("previousExpression");
 
-const sound = new Audio("test.mp3");
-
-const soundFiles = [sound, sound, sound, sound];
+// const sound = new Audio("test.mp3");
 
 // playButton.addEventListener("click", () => {
 //   sound.play();
 // });
 
-let currentExpressionDisplay = "";
-let currentExpressionCode = "";
-//let result = "";
-
-function playRandomSound() {
-  const randomIndex = Math.floor(Math.random() * soundFiles.length);
-  soundFiles[randomIndex].play();
-}
+let currentNumberString = "";
+let secondNumber = "";
+let savedNumber = 0;
+let currentOperator = "";
+let expectingNewNumber = false;
 
 clearButton.addEventListener("click", () => {
-  currentExpressionCode = "";
-  currentExpressionDisplay = "";
-  previousExpression.value = "";
-
+  currentNumberString = "";
+  expectingNewNumber = false;
+  saveNumber = 0;
+  currentOperator = 0;
   updateDisplay();
 });
 
 function appendDigit(digit) {
-  currentExpressionCode += digit;
-  currentExpressionDisplay += digit;
+  if (expectingNewNumber) {
+    currentNumberString = "";
+    expectingNewNumber = false;
+  }
 
+  currentNumberString += digit;
   updateDisplay();
 }
 
 function updateDisplay() {
-  display.value = currentExpressionDisplay;
+  display.value = currentNumberString;
 }
 
 //numbers
@@ -108,53 +105,95 @@ nineButton.addEventListener("click", () => {
 //operators
 
 plusButton.addEventListener("click", () => {
-  currentExpressionCode += "+";
-  currentExpressionDisplay += " + ";
-  updateDisplay();
+  currentOperator = "+";
+  expectingNewNumber = true;
+  //convert the firstNumber from a string to a number
+  savedNumber = Number.parseFloat(currentNumberString);
 });
 minusButton.addEventListener("click", () => {
-  currentExpressionCode += "-";
-  currentExpressionDisplay += " - ";
-  updateDisplay();
+  currentOperator = "-";
+  expectingNewNumber = true;
+  //convert the firstNumber from a string to a number
+  savedNumber = Number.parseFloat(currentNumberString);
 });
 divideButton.addEventListener("click", () => {
-  currentExpressionCode += "/";
-  currentExpressionDisplay += " ÷ ";
-  updateDisplay();
+  currentOperator = "÷";
+  expectingNewNumber = true;
+  //convert the firstNumber from a string to a number
+  savedNumber = Number.parseFloat(currentNumberString);
 });
 multiplyButton.addEventListener("click", () => {
-  currentExpressionCode += "*";
-  currentExpressionDisplay += " × ";
-  updateDisplay();
+  currentOperator = "×";
+  expectingNewNumber = true;
+  //convert the firstNumber from a string to a number
+  savedNumber = Number.parseFloat(currentNumberString);
 });
 squareButton.addEventListener("click", () => {
-  currentExpressionDisplay += "²";
-  currentExpressionCode += "";
+  const number = Number.parseFloat(currentNumberString);
+
+  // do the math
+  const result = number * number;
+
+  //convert back to string
+  currentNumberString = result.toString();
+
   updateDisplay();
 });
 rootButton.addEventListener("click", () => {
-  currentExpressionDisplay += "√";
-  currentExpressionCode += "";
+  const number = Number.parseFloat(currentNumberString);
+
+  // do the math
+  const result = Math.sqrt(number);
+
+  //convert back to string
+  currentNumberString = result.toString();
+
   updateDisplay();
 });
 pointButton.addEventListener("click", () => {
-  appendDigit(".");
+  display.value = ".";
+  // currentOperator = ".";
+  // expectingNewNumber = true;
+  // //convert the firstNumber from a string to a number
+  // savedNumber = Number.parseFloat(currentNumberString);
 });
 
 negatizeButton.addEventListener("click", () => {
-  currentExpressionDisplay += "-";
-  currentExpressionCode += "-";
+  //convert the firstNumber from a string to a number
+  const number = Number.parseFloat(currentNumberString);
+
+  // do the math
+  const result = number * -1;
+
+  //convert back to string
+  currentNumberString = result.toString();
+
   updateDisplay();
-  playRandomSound();
 });
 
 //equal
 equalButton.addEventListener("click", () => {
-  const result = eval(currentExpressionCode);
+  const number = Number.parseFloat(currentNumberString);
+  let result;
 
-  display.value = result;
-  previousExpression.value = currentExpressionDisplay;
+  if (currentOperator === "+") {
+    result = savedNumber + number;
+  }
 
-  currentExpressionCode = result;
-  currentExpressionDisplay = result;
+  if (currentOperator === "-") {
+    result = savedNumber - number;
+  }
+
+  if (currentOperator === "×") {
+    result = savedNumber * number;
+  }
+
+  if (currentOperator === "÷") {
+    result = savedNumber / number;
+  }
+
+  console.log(result);
+  currentNumberString = result.toString();
+  console.log(currentNumberString);
+  updateDisplay();
 });

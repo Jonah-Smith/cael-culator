@@ -22,19 +22,33 @@ html {
     border-radius: 15px;
     max-width: 500px;
     overflow: hidden;
-    box-shadow: 0 0 100px rgba(255,255,255,0.2)
+    box-shadow: 0 0 100px rgba(255,255,255,0.2);
 }
 
 #display{
-    height: 200px;;
+    height: 100px;;
     width: 100%;
     padding: 20px;
     font: 4rem;
     text-align: left;
     border: none;
     background-color: rgb(44, 44, 44);
-    font-size: 2rem;
+    font-size: 3rem;
     /* border-radius: 10px; */
+    text-align: right;
+    color: white;
+}
+
+#previousExpression {
+    height: 50px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: rgb(44, 44, 44);
+    text-align: right;
+    color: gray;
+    font-size: 2rem;
+    padding: 10px 20px;
 }
 
 #keys{
