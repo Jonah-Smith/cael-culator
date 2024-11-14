@@ -187,11 +187,16 @@ rootButton.addEventListener("click", () => {
     currentExpressionCode.length - lastNumber.length
   );
 
+  currentExpressionDisplay = currentExpressionDisplay.slice(
+    0,
+    currentExpressionDisplay.length - lastNumber.length
+  );
+
   //append (lastNumber * lastNumber) to currentExpressionCOde
   const result = Math.sqrt(lastNumber);
   currentExpressionCode += `${result}`;
 
-  currentExpressionDisplay += "√";
+  currentExpressionDisplay += `√${lastNumber}`;
   updateDisplay();
   playOperatorAtRandomTime();
 });
