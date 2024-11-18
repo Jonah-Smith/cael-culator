@@ -61,14 +61,6 @@ function playOperatorAtRandomTime() {
   }
 }
 
-clearButton.addEventListener("click", () => {
-  currentExpressionCode = "";
-  currentExpressionDisplay = "";
-  previousExpression.value = "";
-
-  updateDisplay();
-});
-
 function appendDigit(digit) {
   currentExpressionCode += digit;
   currentExpressionDisplay += digit;
@@ -83,6 +75,7 @@ function updateDisplay() {
 //numbers
 zeroButton.addEventListener("click", () => {
   appendDigit("0");
+  playAtRandomTime();
 });
 
 oneButton.addEventListener("click", () => {
@@ -226,4 +219,13 @@ equalButton.addEventListener("click", () => {
       playRandomSound();
     }
   }
+});
+
+clearButton.addEventListener("click", () => {
+  currentExpressionCode = "";
+  currentExpressionDisplay = "";
+  previousExpression.value = "";
+
+  updateDisplay();
+  playOperatorAtRandomTime();
 });
