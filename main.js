@@ -29,11 +29,17 @@ const display = document.getElementById("display");
 const previousExpression = document.getElementById("previousExpression");
 
 const sound = new Audio("nochance.mp3");
+const sound2 = new Audio("cantletyoudothat1.mp3");
+const sound3 = new Audio("nahbro1.mp3");
+const sound4 = new Audio("nicetry1.mp3");
+const sound5 = new Audio("nocando1.mp3");
+const sound6 = new Audio("sorrybud1.mp3");
+const sound7 = new Audio("uhuh1.mp3");
 
-const soundFiles = [sound, sound, sound, sound];
+const soundFiles = [sound, sound2, sound3, sound4, sound5, sound6, sound7];
 
-const digitSoundProbability = 0.3;
-const operatorSoundProbability = 0.4;
+const digitSoundProbability = 0.4;
+const operatorSoundProbability = 0.2;
 const equalSoundProbability = 0.2;
 
 // playButton.addEventListener("click", () => {
@@ -49,17 +55,17 @@ function playRandomSound() {
   soundFiles[randomIndex].play();
 }
 
-function playAtRandomTime() {
-  if (Math.random() <= digitSoundProbability) {
-    playRandomSound();
-  }
-}
+// function playAtRandomTime() {
+//   if (Math.random() <= digitSoundProbability) {
+//     playRandomSound();
+//   }
+// }
 
-function playOperatorAtRandomTime() {
-  if (Math.random() <= operatorSoundProbability) {
-    playRandomSound();
-  }
-}
+// function playOperatorAtRandomTime() {
+//   if (Math.random() <= operatorSoundProbability) {
+//     playRandomSound();
+//   }
+// }
 
 function appendDigit(digit) {
   currentExpressionCode += digit;
@@ -74,158 +80,338 @@ function updateDisplay() {
 
 //numbers
 zeroButton.addEventListener("click", () => {
-  appendDigit("0");
-  playAtRandomTime();
+  if (Math.random() <= digitSoundProbability) {
+    playRandomSound();
+  } else {
+    appendDigit("0");
+  }
+  // appendDigit("0");
+  // playAtRandomTime();
 });
 
 oneButton.addEventListener("click", () => {
-  appendDigit("1");
-  playAtRandomTime();
+  if (Math.random() <= digitSoundProbability) {
+    playRandomSound();
+  } else {
+    appendDigit("1");
+  }
+  // appendDigit("1");
+  // playAtRandomTime();
 });
 
 twoButton.addEventListener("click", () => {
-  appendDigit("2");
-  playAtRandomTime();
+  if (Math.random() <= digitSoundProbability) {
+    playRandomSound();
+  } else {
+    appendDigit("2");
+  }
+  // appendDigit("2");
+  // playAtRandomTime();
 });
 
 threeButton.addEventListener("click", () => {
-  appendDigit("3");
-  playAtRandomTime();
+  if (Math.random() <= digitSoundProbability) {
+    playRandomSound();
+  } else {
+    appendDigit("3");
+  }
+  // appendDigit("3");
+  // playAtRandomTime();
 });
 
 fourButton.addEventListener("click", () => {
-  appendDigit("4");
-  playAtRandomTime();
+  if (Math.random() <= digitSoundProbability) {
+    playRandomSound();
+  } else {
+    appendDigit("4");
+  }
+  // appendDigit("4");
+  // playAtRandomTime();
 });
 
 fiveButton.addEventListener("click", () => {
-  appendDigit("5");
-  playAtRandomTime();
+  if (Math.random() <= digitSoundProbability) {
+    playRandomSound();
+  } else {
+    appendDigit("5");
+  }
+  // appendDigit("5");
+  // playAtRandomTime();
 });
 
 sixButton.addEventListener("click", () => {
-  appendDigit("6");
-  playAtRandomTime();
+  if (Math.random() <= digitSoundProbability) {
+    playRandomSound();
+  } else {
+    appendDigit("6");
+  }
+  // appendDigit("6");
+  // playAtRandomTime();
 });
 
 sevenButton.addEventListener("click", () => {
-  appendDigit("7");
-  playAtRandomTime();
+  if (Math.random() <= digitSoundProbability) {
+    playRandomSound();
+  } else {
+    appendDigit("7");
+  }
+  // appendDigit("7");
+  // playAtRandomTime();
 });
 
 eightButton.addEventListener("click", () => {
-  appendDigit("8");
-  playAtRandomTime();
+  if (Math.random() <= digitSoundProbability) {
+    playRandomSound();
+  } else {
+    appendDigit("8");
+  }
+  // appendDigit("8");
+  // playAtRandomTime();
 });
 
 nineButton.addEventListener("click", () => {
-  appendDigit("9");
-  playAtRandomTime();
+  if (Math.random() <= digitSoundProbability) {
+    playRandomSound();
+  } else {
+    appendDigit("9");
+  }
+  // appendDigit("9");
+  // playAtRandomTime();
 });
 
 //operators
 
 plusButton.addEventListener("click", () => {
-  currentExpressionCode += "+";
-  currentExpressionDisplay += " + ";
-  updateDisplay();
-  playOperatorAtRandomTime();
+  if (Math.random() <= operatorSoundProbability) {
+    playRandomSound();
+  } else {
+    currentExpressionCode += "+";
+    currentExpressionDisplay += " + ";
+    updateDisplay();
+  }
+  // currentExpressionCode += "+";
+  // currentExpressionDisplay += " + ";
+  // updateDisplay();
+  // playOperatorAtRandomTime();
 });
 minusButton.addEventListener("click", () => {
-  currentExpressionCode += "-";
-  currentExpressionDisplay += " - ";
-  updateDisplay();
-  playOperatorAtRandomTime();
+  if (Math.random() <= operatorSoundProbability) {
+    playRandomSound();
+  } else {
+    currentExpressionCode += "-";
+    currentExpressionDisplay += " - ";
+    updateDisplay();
+  }
+  // currentExpressionCode += "-";
+  // currentExpressionDisplay += " - ";
+  // updateDisplay();
+  // playOperatorAtRandomTime();
 });
 divideButton.addEventListener("click", () => {
-  currentExpressionCode += "/";
-  currentExpressionDisplay += " ÷ ";
-  updateDisplay();
-  playOperatorAtRandomTime();
+  if (Math.random() <= operatorSoundProbability) {
+    playRandomSound();
+  } else {
+    currentExpressionCode += "/";
+    currentExpressionDisplay += " ÷ ";
+    updateDisplay();
+  }
+  // currentExpressionCode += "/";
+  // currentExpressionDisplay += " ÷ ";
+  // updateDisplay();
+  // playOperatorAtRandomTime();
 });
 multiplyButton.addEventListener("click", () => {
-  currentExpressionCode += "*";
-  currentExpressionDisplay += " × ";
-  updateDisplay();
-  playOperatorAtRandomTime();
+  if (Math.random() <= operatorSoundProbability) {
+    playRandomSound();
+  } else {
+    currentExpressionCode += "*";
+    currentExpressionDisplay += " × ";
+    updateDisplay();
+  }
+  // currentExpressionCode += "*";
+  // currentExpressionDisplay += " × ";
+  // updateDisplay();
+  // playOperatorAtRandomTime();
 });
 squareButton.addEventListener("click", () => {
-  const numbers = currentExpressionCode.split(/[\+\-\*\/]/);
+  if (Math.random() <= operatorSoundProbability) {
+    playRandomSound();
+  } else {
+    const numbers = currentExpressionCode.split(/[\+\-\*\/]/);
 
-  let lastNumber = numbers[numbers.length - 1];
-  //delete last number from currentExpressionCode
-  currentExpressionCode = currentExpressionCode.slice(
-    0,
-    currentExpressionCode.length - lastNumber.length
-  );
+    let lastNumber = numbers[numbers.length - 1];
+    //delete last number from currentExpressionCode
+    currentExpressionCode = currentExpressionCode.slice(
+      0,
+      currentExpressionCode.length - lastNumber.length
+    );
 
-  //append (lastNumber * lastNumber) to currentExpressionCOde
-  const result = lastNumber * lastNumber;
-  currentExpressionCode += `${result}`;
+    //append (lastNumber * lastNumber) to currentExpressionCOde
+    const result = lastNumber * lastNumber;
+    currentExpressionCode += `${result}`;
+    currentExpressionDisplay += " ² ";
+    updateDisplay();
+  }
+  // const numbers = currentExpressionCode.split(/[\+\-\*\/]/);
 
-  currentExpressionDisplay += "²";
-  updateDisplay();
-  playOperatorAtRandomTime();
+  // let lastNumber = numbers[numbers.length - 1];
+  // //delete last number from currentExpressionCode
+  // currentExpressionCode = currentExpressionCode.slice(
+  //   0,
+  //   currentExpressionCode.length - lastNumber.length
+  // );
+
+  // //append (lastNumber * lastNumber) to currentExpressionCOde
+  // const result = lastNumber * lastNumber;
+  // currentExpressionCode += `${result}`;
+
+  // currentExpressionDisplay += "²";
+  // updateDisplay();
+  // playOperatorAtRandomTime();
 });
 rootButton.addEventListener("click", () => {
-  //4+5 -9
-  //4+5-Math.sqrt(Math.sqrt())
+  if (Math.random() <= operatorSoundProbability) {
+    playRandomSound();
+  } else {
+    const numbers = currentExpressionCode.split(/[\+\-\*\/]/);
 
-  const numbers = currentExpressionCode.split(/[\+\-\*\/]/);
+    let lastNumber = numbers[numbers.length - 1];
+    //delete last number from currentExpressionCode
+    currentExpressionCode = currentExpressionCode.slice(
+      0,
+      currentExpressionCode.length - lastNumber.length
+    );
 
-  let lastNumber = numbers[numbers.length - 1];
-  //delete last number from currentExpressionCode
-  currentExpressionCode = currentExpressionCode.slice(
-    0,
-    currentExpressionCode.length - lastNumber.length
-  );
+    currentExpressionDisplay = currentExpressionDisplay.slice(
+      0,
+      currentExpressionDisplay.length - lastNumber.length
+    );
 
-  currentExpressionDisplay = currentExpressionDisplay.slice(
-    0,
-    currentExpressionDisplay.length - lastNumber.length
-  );
+    //append (lastNumber * lastNumber) to currentExpressionCOde
+    const result = Math.sqrt(lastNumber);
+    currentExpressionCode += `${result}`;
 
-  //append (lastNumber * lastNumber) to currentExpressionCOde
-  const result = Math.sqrt(lastNumber);
-  currentExpressionCode += `${result}`;
+    currentExpressionDisplay += `√${lastNumber}`;
+    updateDisplay();
+  }
 
-  currentExpressionDisplay += `√${lastNumber}`;
-  updateDisplay();
-  playOperatorAtRandomTime();
+  // const numbers = currentExpressionCode.split(/[\+\-\*\/]/);
+
+  // let lastNumber = numbers[numbers.length - 1];
+  // //delete last number from currentExpressionCode
+  // currentExpressionCode = currentExpressionCode.slice(
+  //   0,
+  //   currentExpressionCode.length - lastNumber.length
+  // );
+
+  // currentExpressionDisplay = currentExpressionDisplay.slice(
+  //   0,
+  //   currentExpressionDisplay.length - lastNumber.length
+  // );
+
+  // //append (lastNumber * lastNumber) to currentExpressionCOde
+  // const result = Math.sqrt(lastNumber);
+  // currentExpressionCode += `${result}`;
+
+  // currentExpressionDisplay += `√${lastNumber}`;
+  // updateDisplay();
+  // playOperatorAtRandomTime();
 });
 pointButton.addEventListener("click", () => {
-  appendDigit(".");
-  playOperatorAtRandomTime();
+  if (Math.random() <= digitSoundProbability) {
+    playRandomSound();
+  } else {
+    appendDigit(".");
+  }
+  // appendDigit(".");
+  // playOperatorAtRandomTime();
 });
 
 negatizeButton.addEventListener("click", () => {
-  currentExpressionDisplay += "-";
-  currentExpressionCode += "-";
-  updateDisplay();
-  playOperatorAtRandomTime();
+  if (Math.random() <= operatorSoundProbability) {
+    playRandomSound();
+  } else {
+    if (currentExpressionDisplay) {
+      const numbers = currentExpressionCode.split(/[\+\-\*\/]/);
+
+      let lastNumber = numbers[numbers.length - 1];
+      //delete last number from currentExpressionCode
+      currentExpressionCode = currentExpressionCode.slice(
+        0,
+        currentExpressionCode.length - lastNumber.length
+      );
+
+      currentExpressionDisplay = currentExpressionDisplay.slice(
+        0,
+        currentExpressionDisplay.length - lastNumber.length
+      );
+
+      //append (lastNumber * lastNumber) to currentExpressionCOde
+      const result = lastNumber * -1;
+      currentExpressionCode += `${result}`;
+
+      currentExpressionDisplay += `-${lastNumber}`;
+      updateDisplay();
+      // currentExpressionCode += "*(-1)";
+      // currentExpressionDisplay += "-";
+      // updateDisplay();
+    } else {
+      currentExpressionDisplay = "";
+    }
+  }
+  // currentExpressionDisplay += "-";
+  // currentExpressionCode += "-";
+  // updateDisplay();
+  // playOperatorAtRandomTime();
 });
 
 //equal
 equalButton.addEventListener("click", () => {
-  const result = eval(currentExpressionCode);
+  if (Math.random() <= equalSoundProbability) {
+    playRandomSound();
+  } else {
+    const result = eval(currentExpressionCode);
 
-  display.value = result;
-  previousExpression.value = currentExpressionDisplay;
+    display.value = result;
+    previousExpression.value = currentExpressionDisplay;
 
-  currentExpressionCode = result;
-  currentExpressionDisplay = result;
-  function playEqualAtRandomTime() {
-    if (Math.random() <= equalSoundProbability) {
-      playRandomSound();
-    }
+    currentExpressionCode = result;
+    currentExpressionDisplay = result;
+    // function playEqualAtRandomTime() {
+    //   if (Math.random() <= equalSoundProbability) {
+    //     playRandomSound();
+    //   }
+    // }
   }
+
+  // const result = eval(currentExpressionCode);
+
+  // display.value = result;
+  // previousExpression.value = currentExpressionDisplay;
+
+  // currentExpressionCode = result;
+  // currentExpressionDisplay = result;
+  // function playEqualAtRandomTime() {
+  //   if (Math.random() <= equalSoundProbability) {
+  //     playRandomSound();
+  //   }
+  // }
 });
 
 clearButton.addEventListener("click", () => {
-  currentExpressionCode = "";
-  currentExpressionDisplay = "";
-  previousExpression.value = "";
+  if (Math.random() <= operatorSoundProbability) {
+    playRandomSound();
+  } else {
+    currentExpressionCode = "";
+    currentExpressionDisplay = "";
+    previousExpression.value = "";
 
-  updateDisplay();
-  playOperatorAtRandomTime();
+    updateDisplay();
+  }
+  // currentExpressionCode = "";
+  // currentExpressionDisplay = "";
+  // previousExpression.value = "";
+
+  // updateDisplay();
+  // playOperatorAtRandomTime();
 });
