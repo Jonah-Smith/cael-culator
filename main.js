@@ -249,7 +249,7 @@ squareButton.addEventListener("click", () => {
     //append (lastNumber * lastNumber) to currentExpressionCOde
     const result = lastNumber * lastNumber;
     currentExpressionCode += `${result}`;
-    currentExpressionDisplay += " ² ";
+    currentExpressionDisplay += "²";
     updateDisplay();
   }
   // const numbers = currentExpressionCode.split(/[\+\-\*\/]/);
