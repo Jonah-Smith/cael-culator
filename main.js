@@ -28,23 +28,19 @@ const negatizeButton = document.getElementById("operatorPlusMinus");
 const display = document.getElementById("display");
 const previousExpression = document.getElementById("previousExpression");
 
-const sound = new Audio("nochance.mp3");
-const sound2 = new Audio("cantletyoudothat1.mp3");
-const sound3 = new Audio("nahbro1.mp3");
-const sound4 = new Audio("nicetry1.mp3");
-const sound5 = new Audio("nocando1.mp3");
-const sound6 = new Audio("sorrybud1.mp3");
-const sound7 = new Audio("uhuh1.mp3");
+const sound = new Audio("sounds/nochance.mp3");
+const sound2 = new Audio("sounds/cantletyoudothat1.mp3");
+const sound3 = new Audio("sounds/nahbro1.mp3");
+const sound4 = new Audio("sounds/nicetry1.mp3");
+const sound5 = new Audio("sounds/nocando1.mp3");
+const sound6 = new Audio("sounds/sorrybud1.mp3");
+const sound7 = new Audio("sounds/uhuh1.mp3");
 
 const soundFiles = [sound, sound2, sound3, sound4, sound5, sound6, sound7];
 
 const digitSoundProbability = 0.4;
 const operatorSoundProbability = 0.2;
 const equalSoundProbability = 0.2;
-
-// playButton.addEventListener("click", () => {
-//   sound.play();
-// });
 
 let currentExpressionDisplay = "";
 let currentExpressionCode = "";
@@ -55,23 +51,14 @@ function playRandomSound() {
   soundFiles[randomIndex].play();
 }
 
-// function playAtRandomTime() {
-//   if (Math.random() <= digitSoundProbability) {
-//     playRandomSound();
-//   }
-// }
-
-// function playOperatorAtRandomTime() {
-//   if (Math.random() <= operatorSoundProbability) {
-//     playRandomSound();
-//   }
-// }
-
-function appendDigit(digit) {
-  currentExpressionCode += digit;
-  currentExpressionDisplay += digit;
-
-  updateDisplay();
+function digitPressed(digit) {
+  if (Math.random() <= digitSoundProbability) {
+    playRandomSound();
+  } else {
+    currentExpressionCode += digit;
+    currentExpressionDisplay += digit;
+    updateDisplay();
+  }
 }
 
 function updateDisplay() {
@@ -80,103 +67,43 @@ function updateDisplay() {
 
 //numbers
 zeroButton.addEventListener("click", () => {
-  if (Math.random() <= digitSoundProbability) {
-    playRandomSound();
-  } else {
-    appendDigit("0");
-  }
-  // appendDigit("0");
-  // playAtRandomTime();
+  digitPressed("0");
 });
 
 oneButton.addEventListener("click", () => {
-  if (Math.random() <= digitSoundProbability) {
-    playRandomSound();
-  } else {
-    appendDigit("1");
-  }
-  // appendDigit("1");
-  // playAtRandomTime();
+  digitPressed("1");
 });
 
 twoButton.addEventListener("click", () => {
-  if (Math.random() <= digitSoundProbability) {
-    playRandomSound();
-  } else {
-    appendDigit("2");
-  }
-  // appendDigit("2");
-  // playAtRandomTime();
+  digitPressed("2");
 });
 
 threeButton.addEventListener("click", () => {
-  if (Math.random() <= digitSoundProbability) {
-    playRandomSound();
-  } else {
-    appendDigit("3");
-  }
-  // appendDigit("3");
-  // playAtRandomTime();
+  digitPressed("3");
 });
 
 fourButton.addEventListener("click", () => {
-  if (Math.random() <= digitSoundProbability) {
-    playRandomSound();
-  } else {
-    appendDigit("4");
-  }
-  // appendDigit("4");
-  // playAtRandomTime();
+  digitPressed("4");
 });
 
 fiveButton.addEventListener("click", () => {
-  if (Math.random() <= digitSoundProbability) {
-    playRandomSound();
-  } else {
-    appendDigit("5");
-  }
-  // appendDigit("5");
-  // playAtRandomTime();
+  digitPressed("5");
 });
 
 sixButton.addEventListener("click", () => {
-  if (Math.random() <= digitSoundProbability) {
-    playRandomSound();
-  } else {
-    appendDigit("6");
-  }
-  // appendDigit("6");
-  // playAtRandomTime();
+  digitPressed("6");
 });
 
 sevenButton.addEventListener("click", () => {
-  if (Math.random() <= digitSoundProbability) {
-    playRandomSound();
-  } else {
-    appendDigit("7");
-  }
-  // appendDigit("7");
-  // playAtRandomTime();
+  digitPressed("7");
 });
 
 eightButton.addEventListener("click", () => {
-  if (Math.random() <= digitSoundProbability) {
-    playRandomSound();
-  } else {
-    appendDigit("8");
-  }
-  // appendDigit("8");
-  // playAtRandomTime();
+  digitPressed("8");
 });
 
 nineButton.addEventListener("click", () => {
-  if (Math.random() <= digitSoundProbability) {
-    playRandomSound();
-  } else {
-    appendDigit("9");
-  }
-  // appendDigit("9");
-  // playAtRandomTime();
+  digitPressed("9");
 });
 
 //operators
@@ -189,10 +116,6 @@ plusButton.addEventListener("click", () => {
     currentExpressionDisplay += " + ";
     updateDisplay();
   }
-  // currentExpressionCode += "+";
-  // currentExpressionDisplay += " + ";
-  // updateDisplay();
-  // playOperatorAtRandomTime();
 });
 minusButton.addEventListener("click", () => {
   if (Math.random() <= operatorSoundProbability) {
@@ -202,10 +125,6 @@ minusButton.addEventListener("click", () => {
     currentExpressionDisplay += " - ";
     updateDisplay();
   }
-  // currentExpressionCode += "-";
-  // currentExpressionDisplay += " - ";
-  // updateDisplay();
-  // playOperatorAtRandomTime();
 });
 divideButton.addEventListener("click", () => {
   if (Math.random() <= operatorSoundProbability) {
@@ -215,10 +134,6 @@ divideButton.addEventListener("click", () => {
     currentExpressionDisplay += " ÷ ";
     updateDisplay();
   }
-  // currentExpressionCode += "/";
-  // currentExpressionDisplay += " ÷ ";
-  // updateDisplay();
-  // playOperatorAtRandomTime();
 });
 multiplyButton.addEventListener("click", () => {
   if (Math.random() <= operatorSoundProbability) {
@@ -228,10 +143,6 @@ multiplyButton.addEventListener("click", () => {
     currentExpressionDisplay += " × ";
     updateDisplay();
   }
-  // currentExpressionCode += "*";
-  // currentExpressionDisplay += " × ";
-  // updateDisplay();
-  // playOperatorAtRandomTime();
 });
 squareButton.addEventListener("click", () => {
   if (Math.random() <= operatorSoundProbability) {
@@ -252,22 +163,6 @@ squareButton.addEventListener("click", () => {
     currentExpressionDisplay += "²";
     updateDisplay();
   }
-  // const numbers = currentExpressionCode.split(/[\+\-\*\/]/);
-
-  // let lastNumber = numbers[numbers.length - 1];
-  // //delete last number from currentExpressionCode
-  // currentExpressionCode = currentExpressionCode.slice(
-  //   0,
-  //   currentExpressionCode.length - lastNumber.length
-  // );
-
-  // //append (lastNumber * lastNumber) to currentExpressionCOde
-  // const result = lastNumber * lastNumber;
-  // currentExpressionCode += `${result}`;
-
-  // currentExpressionDisplay += "²";
-  // updateDisplay();
-  // playOperatorAtRandomTime();
 });
 rootButton.addEventListener("click", () => {
   if (Math.random() <= operatorSoundProbability) {
@@ -294,37 +189,9 @@ rootButton.addEventListener("click", () => {
     currentExpressionDisplay += `√${lastNumber}`;
     updateDisplay();
   }
-
-  // const numbers = currentExpressionCode.split(/[\+\-\*\/]/);
-
-  // let lastNumber = numbers[numbers.length - 1];
-  // //delete last number from currentExpressionCode
-  // currentExpressionCode = currentExpressionCode.slice(
-  //   0,
-  //   currentExpressionCode.length - lastNumber.length
-  // );
-
-  // currentExpressionDisplay = currentExpressionDisplay.slice(
-  //   0,
-  //   currentExpressionDisplay.length - lastNumber.length
-  // );
-
-  // //append (lastNumber * lastNumber) to currentExpressionCOde
-  // const result = Math.sqrt(lastNumber);
-  // currentExpressionCode += `${result}`;
-
-  // currentExpressionDisplay += `√${lastNumber}`;
-  // updateDisplay();
-  // playOperatorAtRandomTime();
 });
 pointButton.addEventListener("click", () => {
-  if (Math.random() <= digitSoundProbability) {
-    playRandomSound();
-  } else {
-    appendDigit(".");
-  }
-  // appendDigit(".");
-  // playOperatorAtRandomTime();
+  digitPressed("0");
 });
 
 negatizeButton.addEventListener("click", () => {
@@ -352,17 +219,10 @@ negatizeButton.addEventListener("click", () => {
 
       currentExpressionDisplay += `-${lastNumber}`;
       updateDisplay();
-      // currentExpressionCode += "*(-1)";
-      // currentExpressionDisplay += "-";
-      // updateDisplay();
     } else {
       currentExpressionDisplay = "";
     }
   }
-  // currentExpressionDisplay += "-";
-  // currentExpressionCode += "-";
-  // updateDisplay();
-  // playOperatorAtRandomTime();
 });
 
 //equal
@@ -377,25 +237,7 @@ equalButton.addEventListener("click", () => {
 
     currentExpressionCode = result;
     currentExpressionDisplay = result;
-    // function playEqualAtRandomTime() {
-    //   if (Math.random() <= equalSoundProbability) {
-    //     playRandomSound();
-    //   }
-    // }
   }
-
-  // const result = eval(currentExpressionCode);
-
-  // display.value = result;
-  // previousExpression.value = currentExpressionDisplay;
-
-  // currentExpressionCode = result;
-  // currentExpressionDisplay = result;
-  // function playEqualAtRandomTime() {
-  //   if (Math.random() <= equalSoundProbability) {
-  //     playRandomSound();
-  //   }
-  // }
 });
 
 clearButton.addEventListener("click", () => {
@@ -408,10 +250,4 @@ clearButton.addEventListener("click", () => {
 
     updateDisplay();
   }
-  // currentExpressionCode = "";
-  // currentExpressionDisplay = "";
-  // previousExpression.value = "";
-
-  // updateDisplay();
-  // playOperatorAtRandomTime();
 });
