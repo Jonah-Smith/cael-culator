@@ -191,7 +191,7 @@ rootButton.addEventListener("click", () => {
   }
 });
 pointButton.addEventListener("click", () => {
-  digitPressed("0");
+  digitPressed(".");
 });
 
 negatizeButton.addEventListener("click", () => {
